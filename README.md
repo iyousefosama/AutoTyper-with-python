@@ -1,1 +1,1 @@
-# AutoTyping-with-python
+# AutoTyper-with-python
