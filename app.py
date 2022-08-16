@@ -1,11 +1,40 @@
 import pyautogui as pg
-import pyfiglet
+import time
+import keyboard
 
-try:
-    ascci_banner = pyfiglet.figlet_format("Auto\nTyping\nby wolf")
-    print(ascci_banner)
-except:
-    print("WOLF AutoTyping.")
+greeter = """
+ ▄▄▄       █    ██ ▄▄▄█████▓ ▒█████                 
+▒████▄     ██  ▓██▒▓  ██▒ ▓▒▒██▒  ██▒               
+▒██  ▀█▄  ▓██  ▒██░▒ ▓██░ ▒░▒██░  ██▒               
+░██▄▄▄▄██ ▓▓█  ░██░░ ▓██▓ ░ ▒██   ██░               
+ ▓█   ▓██▒▒▒█████▓   ▒██▒ ░ ░ ████▓▒░               
+ ▒▒   ▓▒█░░▒▓▒ ▒ ▒   ▒ ░░   ░ ▒░▒░▒░                
+  ▒   ▒▒ ░░░▒░ ░ ░     ░      ░ ▒ ▒░                
+  ░   ▒    ░░░ ░ ░   ░      ░ ░ ░ ▒                 
+      ░  ░   ░                  ░ ░                 
+                                                    
+▄▄▄█████▓▓██   ██▓ ██▓███   ██▓ ███▄    █   ▄████   
+▓  ██▒ ▓▒ ▒██  ██▒▓██░  ██▒▓██▒ ██ ▀█   █  ██▒ ▀█▒  
+▒ ▓██░ ▒░  ▒██ ██░▓██░ ██▓▒▒██▒▓██  ▀█ ██▒▒██░▄▄▄░  
+░ ▓██▓ ░   ░ ▐██▓░▒██▄█▓▒ ▒░██░▓██▒  ▐▌██▒░▓█  ██▓  
+  ▒██▒ ░   ░ ██▒▓░▒██▒ ░  ░░██░▒██░   ▓██░░▒▓███▀▒  
+  ▒ ░░      ██▒▒▒ ▒▓▒░ ░  ░░▓  ░ ▒░   ▒ ▒  ░▒   ▒   
+    ░     ▓██ ░▒░ ░▒ ░      ▒ ░░ ░░   ░ ▒░  ░   ░   
+  ░       ▒ ▒ ░░  ░░        ▒ ░   ░   ░ ░ ░ ░   ░   
+          ░ ░               ░           ░       ░   
+          ░ ░                                       
+ ▄▄▄▄ ▓██   ██▓    █     █░ ▒█████   ██▓      █████▒
+▓█████▄▒██  ██▒   ▓█░ █ ░█░▒██▒  ██▒▓██▒    ▓██   ▒ 
+▒██▒ ▄██▒██ ██░   ▒█░ █ ░█ ▒██░  ██▒▒██░    ▒████ ░ 
+▒██░█▀  ░ ▐██▓░   ░█░ █ ░█ ▒██   ██░▒██░    ░▓█▒  ░ 
+░▓█  ▀█▓░ ██▒▓░   ░░██▒██▓ ░ ████▓▒░░██████▒░▒█░    
+░▒▓███▀▒ ██▒▒▒    ░ ▓░▒ ▒  ░ ▒░▒░▒░ ░ ▒░▓  ░ ▒ ░    
+▒░▒   ░▓██ ░▒░      ▒ ░ ░    ░ ▒ ▒░ ░ ░ ▒  ░ ░      
+ ░    ░▒ ▒ ░░       ░   ░  ░ ░ ░ ▒    ░ ░    ░ ░    
+ ░     ░ ░            ░        ░ ░      ░  ░        
+      ░░ ░                                          
+"""
+print(greeter)
 
 def check_user_input(input):
     try:
@@ -20,28 +49,49 @@ def check_user_input(input):
             return 5
 def option_1(num, text, timeout):
     import time
-    print('Starting after 5 seconds.')
+    print('Starting after 5 seconds.\nHold (esc) to cancel!')
+    if keyboard.is_pressed("esc"):
+        i = num
+        print("ended.")
     time.sleep(5)
 
     i = 0
     while i != num:
+        if keyboard.is_pressed("esc"):
+            i = num
+            print("ended.")
+            break
         i = i+1
+        pg.press('Enter')
         pg.write(str(text))
         pg.press('Enter')
         time.sleep(timeout)
         print(str(i) + ' Done')
 def option_2(timeout, texts):
     import time
-    print('Starting after 5 seconds.')
+    print('Starting after 5 seconds.\nHold (esc) to cancel!')
     time.sleep(5)
 
     for text in texts:
+        if keyboard.is_pressed("esc"):
+            i = num
+            print("ended.")
+            break
         pg.write(str(text))
         pg.press('Enter')
         time.sleep(timeout)
         print(str(i) + ' Done')
 
-options = input("\nOptions:\n[1] Add one sentence that will be auto send\n[2] Add different sentence that will be auto send\nType the option number to start.\n")
+try:
+    options = input("\nOptions:\n[1] Add one sentence that will be auto send\n[2] Add different sentence that will be auto send\nType the option number to start.\n")
+except EOFError:
+    option = 5
+    print('Input is EOF exception, please enter something and run me again')
+    exit()
+except KeyboardInterrupt:
+    option = 5
+    print('You have pressed ctrl-c button.')
+    exit()
 
 options = check_user_input(options)
 
@@ -64,7 +114,6 @@ elif options == 2:
         text = input("Type text number ({i}):\n".format(i=i))
         Texts.append(text)
     option_2(Timeout, Texts)
-
 else:
     print("Unknown input please try again later!")
 
