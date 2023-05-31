@@ -24,7 +24,7 @@ pip install -r requirements.txt
 5. Once the dependencies are installed, you can run the program using the following command:
 
 ```
-python autotyper.py
+python app.py
 ```
 
 
@@ -34,7 +34,7 @@ Alternatively, you can download the pre-built executable file from the [Releases
 1. Launch the AutoTyper program.
 2. Enter the desired text that you want to auto-type.
 3. Specify the typing speed (words per minute) or use the default value.
-4. Set the keyboard shortcut to start and stop the auto-typing process. By default, the shortcuts are set to `Ctrl+Alt+T` to start typing and `Ctrl+Alt+S` to stop typing.
+4. Set the keyboard shortcut to start and stop the auto-typing process. By default, the shortcuts are set to `Esc(Holding)` to start typing and `Ctrl+C` to stop typing.
 5. Press the specified start shortcut keys to begin the auto-typing process. The program will automatically type the specified text.
 6. To stop auto-typing, press the stop shortcut keys. The program will cease typing.
 
