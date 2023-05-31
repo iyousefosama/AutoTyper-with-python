@@ -41,9 +41,6 @@ Alternatively, you can download the pre-built executable file from the [Releases
 ## Contributing
 Contributions are welcome! If you have any ideas, suggestions, or improvements, please feel free to create an issue or submit a pull request. 
 
-## License
-This project is licensed under the [MIT License](LICENSE).
-
 **Note:** The executable file provided in the releases is for convenience and does not contain the full source code. Please refer to the source code for a complete understanding of the program's functionality.
 
 For more information, please refer to the [Python documentation](https://docs.python.org/).
